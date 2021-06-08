@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex;">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/bootstrap.css">
+  <link rel="stylesheet" href="../../css/all.css" />
+  <title>SLIDE_TITLE</title>
+  <!-- <script src="./js/main.js"></script> -->
+  <script src="/js/aos.js"></script>
+  <link rel="stylesheet" href="/css/aos.css">
+  <style>
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .button-navigation {
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      right: 100px;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .border-separator {
+      height: 14px;
+      background: #d82d52;
+      width: 100px;
+      margin: 0 auto 50px;
+      border-radius: 3px;
+    }
+
+    .list-group-item {
+      visibility: hidden;
+      border: 1px solid;
+      background: whitesmoke;
+    }
+
+    a:focus,
+    button:focus {
+      border: 5px solid #d82d52;
+      animation: border-pulsate 2s infinite;
+      animation-timing-function: ease-in-out;
+      outline: none;
+    }
+
+    @keyframes border-pulsate {
+      0% {
+        border-color: #fd3560;
+      }
+
+      25% {
+        border-color: #ee315a;
+      }
+
+      50% {
+        border-color: #e22f56;
+      }
+
+      75% {
+        border-color: #ee315a;
+      }
+
+      100% {
+        border-color: #fd3560;
+      }
+    }
+
+    #answers {
+      visibility: hidden;
+      opacity: 0;
+      position: relative
+    }
+
+    #answers>div {
+      position: absolute;
+    }
+
+    #answerSection {
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .userAnswers {
+      min-height: 58px;
+    }
+
+    #answerInputBox {
+      display: flex;
+    }
+
+    #showAnswer {
+      display: none;
+    }
+
+    #showAnswer button {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    /*  */
+    #answerForm {
+      display: flex;
+    }
+
+    .answerBox {
+      height: 200px;
+      width: 100%;
+      margin-top: 20px;
+      overflow: auto;
+      padding-bottom: 20px;
+    }
+
+    #startButton {
+      display: none;
+      width: 250px;
+      margin: auto;
+      z-index: 999;
+    }
+
+    #head-scroll {
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+
+    #head-scroll::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+
+<body class="w-100 h-100" style="overflow: hidden;">
+  <div class="container-fluid p-5 h-100">
+    <!-- navigation -->
+    <div class="w-100 navigation d-flex">
+      <div class="left-section">
+        <span class="h5 text-warning">MODULE_NUMBER</span>
+        <span class="h1 text-light mb-0">MODULE_TITLE</span>
+      </div>
+      <div class="triangle"></div>
+
+
+      <div class="right-section d-flex align-items-end justify-content-center">
+        <div id="progress-holder">
+          <span class="mx-4 p-2"><i class="fas fa-backward" id="fast-backward"></i> | <b>Slide</b>: n of total_slides |
+            <i class="fas fa-forward" id="fast-forward"></i></span>
+          <div id="progressbar">
+            <div class="currentprogress">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row" style="margin-top: 120px;">
+        <div class="row">
+          <div data-aos="zoom-in" class="d-flex">
+            <img class="question" src="/img/question.png">
+            <p class="font-weight-bold text-dark h3" style="margin-left: 16px">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum rem, neque deserunt mollitia dolorem
+              reprehenderit.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- answer section -->
+      <div id="answerSection" class="container">
+        <div class="row">
+          <div id="answerForm" class="mb-4 align-items-center w-100 justify-content-center mt-2">
+            <p class="font-weight-bold text-dark lead mb-0" style="margin-right: 8px;">Answer:</p>
+            <div id="answerInputBox" class="form-group">
+              <input id="answerInput" type="text" class="form-control" style="margin-right: 8px;" autocomplete="off">
+              <button id="submitButton" onclick="submitAnswer()" class="btn btn-primary">Submit</button>
+            </div>
+            <p class="font-weight-bold text-dark lead"></p>
+          </div>
+          <div id="showAnswer" class="form-group text-center position-relative">
+            <button id="checkAnswers" onclick="checkAnswers()" class="btn btn-primary">Verify Answers</button>
+          </div>
+
+          <div class="col-5 p-4">
+            <!--Grid column-->
+            <div class="w-100">
+              <div>
+                <div class="d-flex align-items-center">
+                  <img style="width: 30px;height: 30px;margin-right: 20px;" src="/img/think.png" alt="">
+                  <span class="h4 mb-0">
+                    Provided Answers:
+                  </span>
+                </div>
+                <ol id="answerBox" class="answerBox border rounded bg-light"></ol>
+              </div>
+            </div>
+          </div>
+          <div id="answers" class="col-7 p-4 rounded border-primary">
+            <div class="mb-4">
+              <div class="d-flex align-items-center mb-2">
+                <img style="width: 30px;height: 30px;margin-right: 20px;" src="/img/key.png" alt="">
+                <p class="font-weight-bold text-dark lead mb-0">
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam, eveniet.
+              </div>
+              <ul style="margin-left: 50px;">
+                <li class="h5 mb-0">
+                  Lorem ipsum dolor sit amet consectetur.
+                </li>
+                <li class="h5 mb-0">
+                  Lorem ipsum dolor sit amet consectetur.
+                </li>
+                <li class="h5 mb-0">
+                  Lorem ipsum dolor sit amet consectetur.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="text-center">
+            <a id="startButton" href="slide6.html"
+              class="btn btn-primary px-5 py-3 h3 rounded mt-3 rounded-pill">CONTINUE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/progressbar.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script>
+    progressbar(11, 45);
+
+    function goBack() {
+      window.location.href = "slide5.html";
+    }
+
+    function goForward() {
+      window.location.href = "slide6.html";
+    }
+    $("#fast-backward").click(function () {
+      goBack();
+    });
+    $("#fast-forward").click(function () {
+      goForward();
+    });
+    let step = 0;
+
+    let items = document.getElementsByClassName('list-group-item');
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'MediaTrackPrevious' || event.key === 'MediaRewind') {
+        window.location.href = 'slide4.html';
+      }
+
+      if (event.key === 'MediaTrackNext' || event.key === 'MediaFastForward') {
+        window.location.href = 'slide6.html';
+      }
+
+      if (event.key === 'Enter') {
+        document.activeElement.click();
+        event.preventDefault();
+
+        if (!answerInput.value) return;
+
+        document.getElementById("submitButton").click();
+      }
+    });
+
+    function focus() {
+      document.getElementById("answerInput").focus();
+    }
+
+    let answerInput = document.getElementById('answerInput');
+
+    function submitAnswer() {
+      if (!answerInput.value) return;
+
+      let text = document.getElementById('answerBox').innerHTML;
+
+      document.getElementById('answerBox').innerHTML = text + "<li class='h5 py-1 mb-0'>" + answerInput.value + "</li>";
+
+      document.getElementById('showAnswer').style.display = 'block';
+
+      answerInput.value = "";
+
+      focus();
+    }
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowDown') {
+        document.getElementById('checkAnswers').focus();
+      }
+
+      if (event.key === 'ArrowUp') {
+        focus();
+      }
+
+      if (event.key === 'ArrowRight') {
+        showAnswer();
+      }
+    });
+
+    function showAnswer() {
+
+      if (!document.getElementById('answerSection').style.visibility) {
+        document.getElementById('answerSection').style.visibility = 'visible';
+        let opacity = 0;
+        let interval = setInterval(() => {
+          document.getElementById('answerSection').style.opacity = opacity;
+          opacity += 0.01;
+          if (opacity >= 1) {
+            clearInterval(interval);
+          }
+        }, 20)
+        focus();
+
+        return
+      }
+    }
+
+    function checkAnswers() {
+      if (!document.getElementById('answers').style.visibility) {
+        document.getElementById('answers').style.visibility = 'visible';
+        $('#checkAnswers').hide();
+
+        let opacity = 0;
+        let timeInterval = setInterval(() => {
+          document.getElementById('answers').style.opacity = opacity;
+          opacity += 0.01;
+          if (opacity >= 1) {
+            clearInterval(timeInterval);
+          }
+        }, 20)
+        document.getElementById('showAnswer').style.display = 'none';
+        document.getElementById('answerForm').style.display = 'none';
+        document.getElementById('startButton').style.display = 'block';
+        document.getElementById('startButton').focus();
+
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'MediaTrackPrevious' || event.key === 'MediaRewind') {
+            //location.replace('module_selection.html')
+            window.location.href = 'slide4.html';
+          }
+
+          if (event.key === 'MediaTrackNext' || event.key === 'MediaFastForward') {
+            window.location.href = 'slide6.html';
+          }
+
+          if (event.key === 'Enter') {
+            document.activeElement.click();
+          }
+        });
+        return
+      }
+    }
+
+
+
+    AOS.init();
+  </script>
+</body>
+
+</html>

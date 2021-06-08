@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex;">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- <link rel="stylesheet" href="./css/style.css"> -->
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./bootstrap.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+  <script src="./js/aos.js"></script>
+  <link rel="stylesheet" href="./css/aos.css">
+  <title>Select Module</title>
+  <style>
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .breadcrumbs {
+      position: absolute;
+      top: 50px;
+    }
+
+    .logos-container {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      bottom: 0;
+      background: #fff;
+      padding: 10px 0 25px;
+    }
+
+    .logos-container .logos {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin: 0 85px;
+    }
+
+    #euLogo {
+      width: 150px;
+    }
+
+    #itcLogo {
+      width: 190px;
+      margin: 0;
+    }
+
+    .euSupportText {
+      position: absolute;
+      bottom: 0;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .disabled {
+      background: #ccc !important;
+      cursor: not-allowed;
+    }
+
+    .active {
+      background: #d82d52 !important;
+      color: #fff;
+    }
+
+    .modules {
+      border: 1px solid #0a0a0a;
+    }
+
+    .modules {
+      background: whitesmoke;
+      border-radius: 2px;
+    }
+
+    a {
+      text-decoration: none;
+      color: #24282c;
+    }
+
+    .chevronLeft {
+      width: 8px;
+      margin: -2px 5px 0 0;
+    }
+
+    .modules:focus {
+      border: 5px solid #d82d52;
+      animation: border-pulsate 2s infinite;
+      animation-timing-function: ease-in-out;
+      outline: none;
+    }
+
+    @keyframes border-pulsate {
+      0% {
+        border-color: #fd3560;
+      }
+
+      25% {
+        border-color: #ee315a;
+      }
+
+      50% {
+        border-color: #e22f56;
+      }
+
+      75% {
+        border-color: #df2f55;
+      }
+
+      100% {
+        border-color: #d82d52;
+      }
+    }
+  </style>
+</head>
+
+<body class="w-100 h-100 bg-secondary">
+  <div class="container-fluid p-5 h-75 mt-5">
+    <div class="breadcrumbs">
+      <div class="breadcrumbs-text w-100 text-center text-uppercase text-light h5">CHOOSE MODULE</div>
+    </div>
+    <div class="container d-flex justify-content-between flex-column">
+      <a href="./module1/en/slide1.html" tabindex="0" id="select1" class="modules w-100 p-3" data-aos="fade-right"
+        data-aos-delay="200">Module 1</a>
+      <a href="./module2/en/slide1.html" tabindex="0" id="select2" class="modules w-100 p-3" data-aos="fade-right"
+        data-aos-delay="400">Module 2</a>
+      <a href="./module3/en/slide1.html" tabindex="0" id="select3" class="modules w-100 p-3 " data-aos="fade-right"
+        data-aos-delay="800">Module 3</a>
+      <a href="./module4/en/slide1.html" tabindex="0" id="select4" class="modules w-100 p-3" data-aos="fade-right"
+        data-aos-delay="1000">Module 4</a>
+      <a href="./module5/en/slide1.html" tabindex="0" id="select5" class="modules w-100 p-3" data-aos="fade-right"
+        data-aos-delay="1200">Module 5</a>
+      <a tabindex="0" id="select6" onclick="window.location.href = 'index.html'" class="modules w-100 p-3"
+        data-aos="fade-right" data-aos-delay="1400">
+        <img class="chevronLeft" src="/img/chevron_left.png" alt="">
+        Back To Language Selection
+      </a>
+    </div>
+    <div class="logos-container d-flex justify-content-between">
+      <img class="logos" src="./img/comesa.png" alt="">
+      <img id="euLogo" class="logos" src="./img/eu.png" alt="">
+      <img id="itcLogo" class="logos" src="./img/itc.png" alt="">
+      <img class="logos" src="./img/iom.png" alt="">
+    </div>
+    <span class="euSupportText lead text-dark">Provided with financial support of European Union</span>
+  </div>
+  <script src="./js/jquery.min.js"></script>
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
+
+  <script>
+    let index = 1;
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'MediaTrackPrevious' || event.key === 'MediaRewind') {
+        window.location.href = 'index.html';
+      }
+
+      if (event.key === 'ArrowDown') {
+        if (index == 6) {
+          return;
+        }
+        index += 1;
+
+        document.getElementById("select" + index).focus();
+      }
+      if (event.key === 'ArrowUp') {
+        if (index == 1) {
+          return;
+        }
+        index -= 1;
+        document.getElementById("select" + index).focus();
+      }
+
+      if (event.key === 'Enter') {
+        document.activeElement.click();
+      }
+    });
+
+    focus();
+
+    function focus() {
+      document.getElementById("select" + index).focus();
+    }
+    AOS.init();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex;">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!-- <link rel="stylesheet" href="./css/style.css"> -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap.css" />
+    <link
+      rel="icon"
+      href="/img/favicon.ico"
+      type="image/x-icon"
+      sizes="16x16"
+    />
+    <link rel="apple-touch-icon" sizes="128x128" href="/img/comesa.png" />
+    <title>Choose language</title>
+    <script src="/js/aos.js"></script>
+    <link rel="stylesheet" href="/css/aos.css" />
+    <style>
+      .container-fluid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        position: relative;
+      }
+
+      #version-info {
+        position: absolute;
+        top: 3rem;
+        right: 0;
+        color: white;
+      }
+
+      .breadcrumbs {
+        position: absolute;
+        top: 50px;
+      }
+
+      .flags {
+        width: 200px;
+        height: 100px;
+        object-fit: cover;
+      }
+
+      .logos-container {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        bottom: 0;
+        background: #fff;
+        padding: 10px 0 25px;
+      }
+
+      .euSupportText {
+        position: absolute;
+        bottom: 0;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+
+      .logos-container .logos {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        margin: 0 85px;
+      }
+
+      #euLogo {
+        width: 150px;
+      }
+
+      #itcLogo {
+        width: 190px;
+        margin: 0;
+      }
+
+      .disabled {
+        opacity: 0.6;
+        border: 1px solid #ccc;
+      }
+
+      @keyframes border-pulsate {
+        0% {
+          border-color: #fd3560;
+        }
+
+        25% {
+          border-color: #ee315a;
+        }
+
+        50% {
+          border-color: #e22f56;
+        }
+
+        75% {
+          border-color: #df2f55;
+        }
+
+        100% {
+          border-color: #d82d52;
+        }
+      }
+
+      a:focus {
+        -moz-box-shadow: 0 0 30px #d82d52;
+        -webkit-box-shadow: 0 0 30px #d82d52;
+        box-shadow: 0 0 30px #d82d52;
+        animation: border-pulsate 2s infinite;
+        animation-timing-function: ease-in-out;
+        outline: none;
+        display: block;
+        border-radius: 5px;
+        padding: 0 10px;
+      }
+
+      #flags-container {
+        padding-bottom: 150px;
+      }
+
+      a {
+        display: block;
+      }
+    </style>
+  </head>
+
+  <body class="w-100 h-100 bg-secondary">
+    <div class="container-fluid p-5 h-100">
+      <div id="version-info" class="">Version: 0.6 Beta - 20.05.2021</div>
+      <div class="breadcrumbs">
+        <div
+          class="breadcrumbs-text w-100 text-center text-uppercase text-light h5"
+        >
+          SELECT LANGUAGE
+        </div>
+      </div>
+      <div
+        class="container d-flex justify-content-between"
+        id="flags-container"
+      >
+        <div class="text-center" data-aos="fade-up" data-aos-delay="500">
+          <a
+            style="text-decoration: none;"
+            href="module_selection_en.html"
+            tabindex="1"
+            class="focusable"
+            id="english-lang"
+            autofocus
+          >
+            <h1 style="color:white;" class="text-uppercase">ENGLISH</h1>
+          </a>
+          <span id="langText1" class="text-light langText"
+            >Modules in English</span
+          >
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="1000">
+          <a
+            style="text-decoration: none;"
+            href="module_selection_fr.html"
+            tabindex="2"
+            class="focusable"
+            id="franch-lang"
+          >
+            <h1 style="color:white" class="text-uppercase">Language 2</h1>
+          </a>
+          <span id="langText2" class="text-light langText" style="display:none"
+            >Modules in Language 2</span
+          >
+        </div>
+        <div class="text-center" data-aos="fade-up" data-aos-delay="1500">
+          <a
+            style="text-decoration: none;"
+            href="module_selection_fr.html"
+            tabindex="3"
+            class="focusable"
+            id="spanish-lang"
+          >
+            <h1 style="color:white" class="text-uppercase">Language 3</h1>
+          </a>
+
+          <span id="langText3" class="text-light langText" style="display:none"
+            >Modules in Language 3</span
+          >
+        </div>
+      </div>
+      <div class="logos-container d-flex justify-content-between">
+        <img class="logos" src="./img/comesa.png" alt="" />
+        <img id="euLogo" class="logos" src="./img/eu.png" alt="" />
+        <img id="itcLogo" class="logos" src="./img/itc.png" alt="" />
+        <img class="logos" src="./img/iom.png" alt="" />
+      </div>
+      <span class="euSupportText lead text-dark"
+        >Provided with financial support of European Union</span
+      >
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    <script>
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowRight") {
+          var focusfound = 0;
+          $(".focusable").each(function(i, obj) {
+            if ($(obj).is(":focus")) {
+              focusfound = $(obj).attr("tabindex");
+            }
+          });
+
+          if (!focusfound) {
+            //Select first
+            $("#english-lang").focus();
+            //Hide labels from all languages
+            $(".langText").hide();
+            $("#langText1").show();
+          } else {
+            //We need to move right if its less then tab index 3
+            if (focusfound < 3) {
+              nextfocus = parseInt(focusfound) + 1;
+              $('[tabindex="' + nextfocus + '"]').focus();
+              $(".langText").hide();
+              if (nextfocus == 2) {
+                $("#langText2").show();
+              }
+              if (nextfocus == 3) {
+                $("#langText3").show();
+              }
+            }
+          }
+        }
+
+        if (event.key === "ArrowLeft") {
+          var focusfound = 0;
+          $(".focusable").each(function(i, obj) {
+            if ($(obj).is(":focus")) {
+              focusfound = $(obj).attr("tabindex");
+            }
+          });
+
+          if (!focusfound) {
+            //Select first
+            $("#spanish-lang").focus();
+            //Hide labels from all languages
+            $(".langText").hide();
+            $("#langText3").show();
+          } else {
+            //We need to move right if its less then tab index 3
+            if (focusfound > 1) {
+              nextfocus = parseInt(focusfound) - 1;
+              $('[tabindex="' + nextfocus + '"]').focus();
+              $(".langText").hide();
+              if (nextfocus == 2) {
+                $("#langText2").show();
+              }
+              if (nextfocus == 1) {
+                $("#langText1").show();
+              }
+            }
+          }
+        }
+      });
+      AOS.init();
+    </script>
+  </body>
+</html>

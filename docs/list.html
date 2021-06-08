@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex;">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="../../css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../bootstrap.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+  <title>MODULE_TITLE</title>
+  <script src="/js/aos.js"></script>
+  <link rel="stylesheet" href="/css/aos.css">
+  <!-- <script src="./js/main.js"></script> -->
+  <link rel="stylesheet" href="../../css/all.css" />
+  <style>
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .button-navigation {
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      right: 100px;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .border-separator {
+      height: 14px;
+      background: #d82d52;
+      width: 100px;
+      margin: 0 auto 50px;
+      border-radius: 3px;
+    }
+
+    ul {
+      min-height: 250px;
+      list-style: none;
+      margin-top: 30px;
+    }
+
+    ul li {
+      min-height: 62px;
+      white-space: nowrap;
+    }
+
+    .list-group-item {
+      display: none;
+      border: 1px solid;
+      background: whitesmoke;
+    }
+
+    a:focus {
+      border: 5px solid #d82d52;
+      animation: border-pulsate 2s infinite;
+      animation-timing-function: ease-in-out;
+      outline: none;
+    }
+
+    @keyframes border-pulsate {
+      0% {
+        border-color: #fd3560;
+      }
+
+      25% {
+        border-color: #ee315a;
+      }
+
+      50% {
+        border-color: #e22f56;
+      }
+
+      75% {
+        border-color: #ee315a;
+      }
+
+      100% {
+        border-color: #fd3560;
+      }
+    }
+
+    #startButton {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body class="w-100 h-100">
+  <div class="container-fluid p-5 h-100">
+    <!-- navigation -->
+    <div class="w-100 navigation d-flex">
+      <div class="left-section">
+        <span class="h5 text-warning">Module number</span>
+        <span class="h1 text-light">SOME_TITLE</span>
+      </div>
+      <div class="triangle"></div>
+      <div class="right-section d-flex align-items-end justify-content-center">
+        <div id="progress-holder">
+          <span class="mx-4 p-2"><i class="fas fa-backward" id="fast-backward"></i> | <b>Slide</b>: n of total_slides |
+            <i class="fas fa-forward" id="fast-forward"></i></span>
+          <span class="mx-4 p-2 d-none"><b>Scene</b>: 3 of 3</span>
+          <div id="progressbar">
+            <div class="currentprogress">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <p data-aos="fade-right" class="font-weight-bold text-dark h3 mt-4">Lorem ipsum dolor sit amet.:</p>
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-6 mb-4 mt-1 w-100">
+          <ul class="list-group">
+
+            <li data-aos="fade-right" class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="2">
+              <img src="../../img/key.png" class="key-list-icon" alt="">
+              <span class="h4 mb-0 py-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing.
+              </span>
+            </li>
+            <li data-aos="fade-right" class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="1">
+              <img src="../../img/key.png" class="key-list-icon" alt="">
+              <span class="h4 mb-0 py-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing.
+              </span>
+            </li>
+            <li data-aos="fade-right" class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="3">
+              <img src="../../img/key.png" class="key-list-icon" alt="">
+              <span class="h4 mb-0 py-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing.
+              </span>
+            </li>
+            <li class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="4">
+              <img src="../../img/key.png" class="key-list-icon" alt="">
+              <span class="h4 mb-0 py-2">
+                Lorem ipsum dolor sit, amet consectetur adipisicing.
+              </span>
+              <a id="startButton" href="slide2.html"
+                class="btn btn-primary px-5 py-3 h3 rounded mt-3 rounded-pill">CONTINUE</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/progressbar.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/progressbar.js"></script>
+  <script>
+    let step = 0;
+    let init = true;
+
+    progressbar(3, 45);
+
+    function goBack() {
+      window.location.href = "slide1-1.html";
+    }
+
+    function goForward() {
+      window.location.href = "slide2.html";
+    }
+    $("#fast-backward").click(function () {
+      goBack();
+    });
+    $("#fast-forward").click(function () {
+      goForward();
+    });
+    let items = document.getElementsByClassName('list-group-item');
+
+    window.addEventListener('keydown', (event) => {
+
+      if (event.key === 'MediaTrackPrevious' || event.key === 'MediaRewind') {
+        goBack();
+      }
+
+      if (event.key === 'MediaTrackNext' || event.key === 'MediaFastForward') {
+        goForward();
+      }
+
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        console.log(step);
+        if (step == 0) return;
+
+        step -= 1;
+        init = false;
+
+        $(items[step]).hide(500);
+      }
+
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        if (step == 4) return;
+
+        $(items[step]).show(1000);
+
+        step += 1;
+        scene = step + 1;
+        init = false;
+      }
+
+      if (step >= 3) {
+        focus();
+      }
+    });
+
+    focus();
+
+    function focus() {
+      document.getElementById("startButton").focus();
+    }
+
+    function checkFocus() {
+      let body = document.querySelector('body');
+      if (document.hasFocus() || step >= 4) {
+        focus();
+      }
+
+    }
+    setInterval(checkFocus, 1000);
+
+    AOS.init();
+  </script>
+</body>
+
+</html>

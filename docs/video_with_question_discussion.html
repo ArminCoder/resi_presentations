@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex;">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap.css">
+    <title>Module 1 - Scenario 1</title>
+    <script src="/js/aos.js"></script>
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="../../css/all.css" />
+    <!-- <script src="./js/main.js"></script> -->
+    <style>
+        video {
+            width: 100% !important;
+            height: auto !important;
+        }
+
+        #videoQuestion {
+            display: none;
+        }
+
+        #feedback {
+            min-height: 170px;
+        }
+
+        .feedback {
+            border-radius: 10px;
+            color: #212529;
+            padding: 20px;
+        }
+
+        .right-answer {
+            background: #319fe2 !important;
+        }
+
+        .container-fluid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .button-navigation {
+            position: absolute;
+            bottom: 0;
+            padding: 20px;
+            right: 100px;
+            width: 100%;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        .border-separator {
+            height: 14px;
+            background: #d82d52;
+            width: 100px;
+            margin: 0 auto 50px;
+            border-radius: 3px;
+        }
+
+        a:focus,
+        button:focus {
+            border: 5px solid #d82d52;
+            animation: border-pulsate 2s infinite;
+            animation-timing-function: ease-in-out;
+            outline: none;
+        }
+
+        video:focus {
+            box-shadow: 0 0 20px #d82d52;
+            animation: border-pulsate 2s infinite;
+            animation-timing-function: ease-in-out;
+            outline: none;
+        }
+
+        @keyframes border-pulsate {
+            0% {
+                border-color: #fd3560;
+            }
+
+            25% {
+                border-color: #ee315a;
+            }
+
+            50% {
+                border-color: #e22f56;
+            }
+
+            75% {
+                border-color: #ee315a;
+            }
+
+            100% {
+                border-color: #fd3560;
+            }
+        }
+
+        #controlButtons {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body class="w-100 h-100">
+    <div class="container-fluid p-5 h-100">
+        <!-- navigation -->
+        <div class="w-100 navigation d-flex">
+            <div class="left-section">
+                <span class="h5 text-warning">Module 1</span>
+                <span class="h1 text-light">Scenario 1</span>
+            </div>
+            <div class="triangle"></div>
+            <div class="right-section d-flex align-items-end justify-content-center">
+                <div id="progress-holder">
+                    <!-- <span class="mx-4 p-2"><b>Step</b>: 1 of 5</span> -->
+                    <span class="mx-4 p-2"><i class="fas fa-backward" id="fast-backward"></i> | <b>Slide</b>: 6c of
+                        21 | <i class="fas fa-forward" id="fast-forward"></i></span>
+                    <div id="progressbar">
+                        <div class="currentprogress">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <!--Grid row-->
+            <div data-aos="zoom-in" class="col-10 mx-auto" style="padding: 30px;padding-top:0;padding-bottom: 0;">
+                <video style="margin-top: 112px" id="video1" width="540" height="300" controls>
+                    <source src="/module3/en/videos/M3-VIDEO2-PART2-ENG.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div id="videoQuestion" class="container">
+            <div id="questionText" class="row mt-5" style="display: none;">
+                <div class="row">
+                    <div class="d-flex mb-4">
+                        <img class="question" src="/img/question.png">
+                        <p class="font-weight-bold text-dark h1" style="margin-left: 16px">
+                            If you ever witnessed corrupt practices at the border, how did you react to them?
+                        </p>
+                    </div>
+                    <div class="d-flex mt-4 justify-content-center">
+                        <a href="slide6-4.html" id="yesButton"
+                            class="btn btn-primary mx-3 px-4 py-2 d-flex align-items-center">
+                            <img style="width: 20px;height: 20px;border-radius: 50%;margin-right: 5px;display: none;"
+                                id="times" src="/img/times.png" alt="">
+                            Continue
+                        </a>
+                        <button id="noButton" class="btn btn-primary mx-3 px-4 py-2 d-flex align-items-center d-none">
+                            <img style="width: 20px;height: 20px;border-radius: 50%;margin-right: 5px;display: none;"
+                                id="check" src="/img/check.png" alt="">
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- feedback -->
+            <div id="feedback" class="row mt-5">
+                <div id="feedbackContent" class="row" style="display: none;">
+                    <div class="d-flex mb-4">
+                        <img class="question" src="/img/key.png">
+                        <div>
+                            <p class="feedback h3" style="margin-left: 16px">
+                                Discussion:
+                            </p>
+                            <ul>
+                                <li style="font-size: 25px">
+                                    In the end, what did the female trader win, lose or risk after having her
+                                    merchandise brought
+                                    through the informal route by the porter?
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- buttons -->
+        <div id="controlButtons">
+            <button id="startButton" class="btn btn-primary mx-2 px-5 py-3 h3 rounded mt-3 rounded-pill"
+                style="display: none;">CONTINUE</button>
+            <button id="playAgain" class="btn btn-primary mx-2 px-5 py-3 h3 rounded mt-3 rounded-pill"
+                style="display: none;">PLAY AGAIN</button>
+        </div>
+    </div>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/progressbar.js"></script>
+
+    <script>
+        progressbar(24, 85);
+
+        function goBack() {
+            window.location.href = "slide6-2.html";
+        }
+
+        function goForward() {
+            window.location.href = "slide6-4.html";
+        }
+
+
+        $("#fast-backward").click(function () {
+            goBack();
+        });
+        $("#fast-forward").click(function () {
+            goForward();
+        });
+
+        let step = 1;
+        let controlsStep = false;
+        let questionPhase = true;
+        let video = document.getElementById('video1');
+        let question = document.getElementById('videoQuestion');
+        let feedback = document.getElementById('feedback');
+        let duration = video.duration;
+        let answerShown = false;
+        let videoEnded = false;
+        let intervalSet = false;
+        let continueButton = document.getElementById("startButton");
+        let playAgain = document.getElementById("playAgain");
+        let yesButton = document.getElementById('yesButton');
+        let noButton = document.getElementById('noButton');
+        let allowClick = true;
+        let completed = false;
+
+        document.getElementById('video1').focus();
+
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'MediaTrackPrevious' || event.key === 'MediaRewind') {
+                window.location.href = 'slide2.html';
+            }
+
+            if (event.key === 'MediaTrackNext' || event.key === 'MediaFastForward') {
+                window.location.href = 'slide3-1.html';
+            }
+
+            if (event.key === 'ArrowRight') {
+                if (controlsStep) {
+                    playAgain.focus();
+                } else {
+                    noButton.focus();
+                }
+            }
+
+            if (event.key === 'ArrowLeft') {
+                if (controlsStep) {
+                    continueButton.focus();
+                } else {
+                    yesButton.focus();
+                }
+            }
+
+            if (event.key === 'Enter') {
+                document.activeElement.click();
+            }
+        });
+
+        function focus() {
+            document.getElementById("startButton").focus();
+        }
+
+        function showButtons(full = true) {
+            continueButton.style.display = 'block';
+            if (full) {
+                playAgain.style.display = 'block';
+            }
+            setTimeout(() => {
+                continueButton.focus();
+            }, 200);
+            controlsStep = true;
+        }
+
+        function hideButtons() {
+            continueButton.style.display = 'none';
+            playAgain.style.display = 'none';
+            controlsStep = false;
+        }
+
+        playAgain.addEventListener('click', function () {
+            hideButtons();
+            setTimeout(() => {
+                showVideo();
+            })
+        })
+
+        continueButton.addEventListener('click', function () {
+            if (allowClick) {
+                if (completed) {
+                    return window.location.href = '/module1/en/slide3-1.html';
+                }
+                // document.getElementById('step').innerText = step;
+                nextStep();
+            }
+            allowClick = false;
+            setTimeout(() => {
+                allowClick = true;
+            }, 500)
+        })
+
+        function nextStep() {
+            step = step + 1;
+            // document.getElementById('step').innerText = step;
+            hideButtons();
+            if (questionPhase) {
+                showQuestion();
+            } else {
+                hideQuestion();
+                showVideo();
+            }
+        }
+
+        function showVideo() {
+            video = document.getElementById('video1');
+            $(video).fadeIn(1500);
+
+            video.focus();
+            setTimeout(() => {
+                video.load();
+                trackVideo();
+            }, 1000)
+        }
+
+        function hideVideo() {
+            $(video).fadeOut();
+            video.pause();
+        }
+
+        function showQuestion() {
+            question.style.display = 'block';
+            $('#questionText').fadeIn(1000);
+            // focusing clicks it for some reason, timeout fixes it
+            setTimeout(() => {
+                yesButton.focus();
+            }, 200)
+        }
+
+        function hideQuestion() {
+            question.style.display = 'none';
+        }
+
+        trackVideo();
+
+        function trackVideo() {
+            let interval = setInterval(() => {
+                if (video.duration / video.currentTime <= 1) {
+                    video.pause();
+                    hideVideo();
+                    showButtons();
+                    clearInterval(interval);
+                    $('#startButton').focus();
+                }
+            }, 100)
+        }
+
+        yesButton.addEventListener('click', function () {
+            // if (allowClick) {
+            //   answerQuestion('wrong');
+            //   step = step + 1;
+            //   document.getElementById('step').innerText = step;
+            // }
+            // allowClick = false;
+            // setTimeout(() => {
+            //   allowClick = true;
+            // }, 1000)
+            // disableButtons();
+        })
+
+        noButton.addEventListener('click', function () {
+            if (allowClick) {
+                answerQuestion('correct');
+                step = step + 1;
+                document.getElementById('step').innerText = step;
+            }
+            allowClick = false;
+            setTimeout(() => {
+                allowClick = true;
+            }, 1000)
+            disableButtons();
+        })
+
+        function disableButtons() {
+            $('#yesButton').attr('disabled', 'disabled');
+            $('#noButton').attr('disabled', 'disabled');
+        }
+
+        function answerQuestion(answer) {
+            let successClasses = ['bg-success'];
+            let wrongClasses = ['border-secondary bg-light text-secondary'];
+
+            if (answer == 'wrong') {
+                document.getElementById('yesButton').classList.add('border-danger', 'btn-light');
+                document.getElementById('times').style.display = 'block';
+            } else {
+                document.getElementById('noButton').classList.add('border-success', 'btn-light', 'btn-light');
+                document.getElementById('check').style.display = 'block';
+            }
+
+            // feedback.style.visibility = 'visible';
+            $('#feedbackContent').fadeIn(1000);
+            answerShown = true;
+            questionPhase = false;
+            showButtons(false);
+            completed = true;
+        }
+
+        // check focus
+        function focus() {
+            document.getElementById("video1").focus();
+        }
+
+        function checkFocus() {
+            let body = document.querySelector('body');
+            if (document.hasFocus()) {
+                focus();
+            }
+        }
+
+        setInterval(checkFocus, 1000);
+
+        AOS.init();
+    </script>
+</body>
+
+</html>

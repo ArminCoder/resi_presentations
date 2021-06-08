@@ -1,0 +1,139 @@
+.container-fluid {
+  overflow: hidden;
+}
+
+.checker-content {
+  font-size: 13px;
+  text-align: justify;
+}
+.checkers {
+  font-size: 30px;
+}
+.question {
+  width: 60px;
+  height: 60px;
+  margin-left: -50px;
+}
+#feedback-div {
+  max-width: 88vw;
+  margin: auto;
+}
+.true-false {
+  font-size: 20px;
+}
+.intro-title {
+  border-top: 2px dashed black;
+  border-bottom: 2px dashed black;
+  display: inline-block;
+  font-size: 40px;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: rgb(136, 178, 247);
+}
+.question-title {
+  font-size: 20px;
+  color: rgb(136, 178, 247);
+  margin-left: 50px;
+}
+.content-title {
+  font-size: 14px;
+  margin-left: 75px;
+  text-align: justify;
+}
+.heading-pages {
+  font-size: 35px;
+  color: rgb(136, 178, 247);
+}
+.title-page4 {
+  font-size: 14px;
+  margin-left: 75px;
+  text-align: justify;
+}
+.page4-content {
+  margin-left: 75px;
+}
+.page4-img {
+  width: 100px;
+}
+.title-page4-2 {
+  font-size: 14px;
+  text-align: justify;
+  width: 80%;
+}
+.heading-page5 {
+  font-size: 30px;
+  color: rgb(136, 178, 247);
+}
+.learning-points {
+  border-top: 2px dashed rgb(136, 178, 247);
+  border-bottom: 2px dashed rgb(136, 178, 247);
+}
+
+/* ///////////// */
+.navigation {
+  position: absolute;
+  top: 0;
+  background: #fff;
+  height: 100px;
+  box-shadow: 1px 1px 10px #ccc;
+}
+.navigation .triangle {
+  height: 0;
+  border-left: 0px solid #000;
+  border-right: 137px solid transparent;
+  border-bottom: 100px solid #d82d52;
+  width: 10%;
+}
+.navigation .left-section {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 11px 0 11px 20px;
+  width: 60%;
+  background: #d82d52;
+}
+.navigation .right-section {
+  width: 30%;
+}
+
+.breadcrumbs {
+  margin-top: 100px;
+  height: 50px;
+}
+
+.key-list-icon {
+  width: 21px;
+  height: 21px;
+  margin-right: 20px;
+}
+.right-section .fa,
+.right-section .fas {
+  z-index: 99999;
+  position: relative;
+}
+.right-section .fa::before,
+.right-section .fas::before {
+  z-index: 99999;
+  position: relative;
+}
+.right-section .fa:hover,
+.right-section .fas:hover {
+  color: #3b87cb;
+  cursor: pointer;
+}
+#progressbar {
+  border-radius: 10px;
+  padding: 3px;
+  border: 1px solid;
+  text-align: left;
+  position: relative;
+}
+#progressbar .currentprogress {
+  background-color: #d82d52;
+  border-radius: 5px;
+
+  display: inline-block;
+}
+#progress-holder {
+  width: 80%;
+  text-align: center;
+}

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex;">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/bootstrap.css">
+  <link rel="stylesheet" href="../../css/all.css" />
+  <title>Module 2 - Knowledge Check</title>
+  <!-- <script src="./js/main.js"></script> -->
+  <script src="/js/aos.js"></script>
+  <link rel="stylesheet" href="/css/aos.css">
+  <style>
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .button-navigation {
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      right: 100px;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .border-separator {
+      height: 14px;
+      background: #d82d52;
+      width: 100px;
+      margin: 0 auto 50px;
+      border-radius: 3px;
+    }
+
+    .list-group-item {
+      border: 1px solid;
+    }
+
+    a {
+      text-decoration: none;
+      color: #212529;
+    }
+
+
+    a:focus {
+      border: 5px solid #d82d52;
+      animation: border-pulsate 2s infinite;
+      animation-timing-function: ease-in-out;
+      outline: none;
+    }
+
+    @keyframes border-pulsate {
+      0% {
+        border-color: #fd3560;
+      }
+
+      25% {
+        border-color: #ee315a;
+      }
+
+      50% {
+        border-color: #e22f56;
+      }
+
+      75% {
+        border-color: #ee315a;
+      }
+
+      100% {
+        border-color: #fd3560;
+      }
+    }
+
+    #answers {
+      visibility: hidden;
+      opacity: 0;
+      position: relative
+    }
+
+    #answers>div {
+      position: absolute;
+    }
+
+    .userAnswers {
+      min-height: 58px;
+    }
+
+    #answerInputBox {
+      display: flex;
+    }
+
+    #answerInputBox3 {
+      display: flex;
+    }
+
+    #showAnswer {
+      display: none;
+    }
+
+    #showAnswer button {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    /*  */
+    #answerForm {
+      display: flex;
+    }
+
+    #answerForm4 {
+      display: flex;
+    }
+
+    .answerBox {
+      height: 200px;
+      width: 100%;
+      margin-top: 20px;
+      overflow: auto;
+      padding-bottom: 20px;
+    }
+
+    #startButton {
+      width: 250px;
+      margin: auto;
+      z-index: 999;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, -15%);
+    }
+
+    .questions {
+      display: none;
+    }
+
+    #checkAnswers {
+      display: none;
+    }
+
+    #feedback {
+      display: none;
+    }
+
+    .drag {
+      background: #d82d52 !important;
+      color: #fff !important;
+      border-right: 1px solid #000;
+      border-left: 1px solid #000;
+    }
+
+    #questionText {
+      display: flex;
+      margin-bottom: 20px;
+    }
+
+    .dragText {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      padding-left: 20px;
+      align-items: center;
+    }
+
+    .feedbackContent {
+      margin: 20px;
+      font-size: 1.3rem;
+      border-radius: 20px;
+    }
+
+    .lightgreen {
+      background: #53d053;
+    }
+  </style>
+</head>
+
+<body class="w-100 h-100" style="overflow: hidden;">
+  <div class="container-fluid p-5 h-100">
+    <!-- navigation -->
+    <div class="w-100 navigation d-flex">
+      <div class="left-section">
+        <span class="h5 text-warning">Module 2</span>
+        <span class="h1 text-light">Knowledge Check</span>
+      </div>
+      <div class="triangle"></div>
+      <div class="right-section d-flex align-items-end justify-content-center">
+        <div id="progress-holder">
+          <span class="mx-4 p-2"><i class="fas fa-backward" id="fast-backward"></i> | <b>Slide</b>: 11a of 15 | <i
+              class="fas fa-forward" id="fast-forward"></i></span>
+          <div id="progressbar">
+            <div class="currentprogress">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="mainQuestion" class="row">
+        <div style="height: 110px;"></div>
+        <div class="row">
+          <div id="questionText">
+            <img data-aos="zoom-out" data-aos-duration="1700" class="question" src="/img/question.png">
+            <p data-aos="zoom-in" data-aos-duration="1500" class="font-weight-bold text-dark h3"
+              style="margin-left: 16px">
+              There are four steps to clearing goods at the border. Place these in the correct order.
+            </p>
+          </div>
+        </div>
+        <ul id="list" class="list-group">
+
+          <li class="draggable list-group-item p-3 bg-light text-dark h5 mb-0 position-relative" style="height: 50px;">
+            <a class="dragText" href="#" id="item2" data-order="2" data-focus="1">
+              Getting permission to cross from the Immigration Desk
+            </a>
+            <img src="/img/arrow.png" width="12"
+              style="position: absolute; right: 0; top: 50%; transform: translate(-50%, -50%); pointer-events: none;" />
+          </li>
+          <li class="draggable list-group-item p-3 bg-light text-dark h5 mb-0 position-relative" style="height: 50px;">
+            <a class="dragText" href="#" id="item3" data-order="3" data-focus="2">
+              Clearing your products through Quality Control
+            </a>
+            <img src="/img/arrow.png" width="12"
+              style="position: absolute; right: 0; top: 50%; transform: translate(-50%, -50%); pointer-events: none;" />
+          </li>
+          <li class="draggable list-group-item p-3 bg-light text-dark h5 mb-0 position-relative" style="height: 50px;">
+            <a class="dragText" href="#" id="item1" data-order="1" data-focus="3">
+              Getting cleared at the Public Health Desk
+            </a>
+            <img src="/img/arrow.png" width="12"
+              style="position: absolute; right: 0; top: 50%; transform: translate(-50%, -50%); pointer-events: none;" />
+          </li>
+          <li class="draggable list-group-item p-3 bg-light text-dark h5 mb-0 position-relative" style="height: 50px;">
+            <a class="dragText" href="#" id="item4" data-order="4" data-focus="4">
+              Paying any fees required at the Customs Office
+            </a>
+            <img src="/img/arrow.png" width="12"
+              style="position: absolute; right: 0; top: 50%; transform: translate(-50%, -50%); pointer-events: none;" />
+          </li>
+        </ul>
+        <div>
+          <a id="startButton" href="#" class="btn text-light px-4 py-3 h3 rounded mt-5 rounded-pill"
+            style="background: #d82d52;width: 300px;" data-focus="5">Verify Answers</a>
+        </div>
+      </div>
+
+      <!-- answer section -->
+      <div id="answerSection" class="container">
+        <div class="row">
+          <div id="feedback" class="col-12 p-0 rounded border-primary question1content">
+            <div class="mb-4">
+              <div class="feedbackContent d-flex align-items-center mb-2">
+                <img style="width: 30px;height: 30px;margin-right: 20px;" src="/img/key.png" alt="">
+
+                <ul>
+                  <li>
+                    First, you get your health and vaccination documents checked at the Public Health Desk;
+                  </li>
+                  <li>
+                    Second, you get your passport/travel document validated by the Immigration Desk;
+                  </li>
+                  <li>
+                    Third, you have your goods inspected by Quality Control;
+                  </li>
+                  <li>
+                    Finally, you pay any fees required at the Customs Office.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/progressbar.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script>
+    progressbar(33, 45);
+
+    function goBack() {
+      window.location.href = "slide11.html";
+    }
+
+    function goForward() {
+      window.location.href = "slide12.html";
+    }
+    $("#fast-backward").click(function () {
+      goBack();
+    });
+    $("#fast-forward").click(function () {
+      goForward();
+    });
+
+    let focused = 0;
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'MediaTrackPrevious' || event.key === 'MediaRewind') {
+        goBack();
+      }
+
+      if (event.key === 'MediaTrackNext' || event.key === 'MediaFastForward') {
+        goForward();
+      }
+
+      if (event.key === 'ArrowRight') {
+        document.getElementById("startButton").focus();
+      }
+
+      if (event.key === 'ArrowDown') {
+        if (focused == 5) {
+          return;
+        }
+        focused++;
+        document.querySelector("[data-focus='" + focused + "']").focus();
+      }
+
+      if (event.key === 'ArrowUp') {
+        if (focused == 1 || focused == 0) {
+          return;
+        }
+        focused--;
+        document.querySelector("[data-focus='" + focused + "']").focus();
+      }
+    });
+
+    let text1 = "Getting cleared at the Public Health Desk";
+
+    let text2 = "Getting permission to cross from the Immigration Desk";
+
+    let text3 = "Clearing your products through Quality Control";
+
+    let text4 = "Paying any fees required at the Customs Office";
+
+    let order;
+    let selected = false;
+    let prevElText;
+    let newElText;
+    let moved = 0;
+    let questionPhase = true;
+
+    $(".draggable").click(function (event) {
+      if (event.target.classList.contains('drag')) {
+        event.target.classList.remove('drag');
+        selected = false;
+        return;
+      }
+
+      if (order) {
+        prevElText = document.querySelector('[data-order="' + order + '"]').innerText;
+        if (order !== event.target.dataset.order && selected) {
+          let prevOrder = order;
+          let newOrder = event.target.dataset.order;
+          newElText = document.querySelector('[data-order="' + event.target.dataset.order + '"]').innerText;
+          document.querySelector('[data-order="' + order + '"]').innerText = newElText;
+          document.querySelector('[data-order="' + event.target.dataset.order + '"]').innerText = prevElText;
+          selected = false;
+          $(".drag").removeClass("drag");
+          moved++;
+          document.querySelector('[data-order="' + order + '"]').setAttribute('data-order', newOrder);
+          document.querySelector('[data-order="' + event.target.dataset.order + '"]').setAttribute('data-order',
+            order);
+          return;
+        }
+      }
+
+      order = event.target.dataset.order;
+
+      if (!selected) {
+        event.target.classList.add('drag');
+      }
+      selected = true;
+    });
+
+    function arrange() {
+      var list = document.querySelector('#list');
+
+      [...list.children]
+      .sort((a, b) => a.innerText > b.innerText ? 1 : -1)
+        .forEach(node => list.appendChild(node));
+    }
+
+    document.getElementById('startButton').addEventListener('click', () => {
+      if (questionPhase) {
+        $('#feedback').fadeIn();
+        setTimeout(() => {
+          $('#questionText').fadeOut();
+        }, 200)
+        questionPhase = false;
+        verifyElements();
+      } else {
+        window.location.href = "slide12.html";
+      }
+    })
+
+    function verifyElements() {
+      let elems = document.querySelectorAll('[data-order]');
+
+      elems.forEach((el, index) => {
+        if (el.getAttribute("data-order") == (index + 1)) {
+          el.classList.add('lightgreen', 'text-white');
+        } else {
+          el.classList.add('bg-danger', 'text-white');
+        }
+      })
+    }
+
+    function focus() {
+      document.getElementById("startButton").focus();
+    }
+
+    function checkFocus() {
+      if (questionPhase) {
+        return;
+      }
+      let body = document.querySelector('body');
+      if (document.hasFocus()) {
+        focus();
+      }
+    }
+
+    setInterval(checkFocus, 1000);
+
+
+    AOS.init();
+  </script>
+</body>
+
+</html>

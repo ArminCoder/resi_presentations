@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex;">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/aos.css">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/bootstrap.css">
+  <link rel="stylesheet" href="../../css/all.css" />
+  <title>Module 2 - Border post officials</title>
+  <script src="/js/aos.js"></script>
+  <style>
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .button-navigation {
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      right: 100px;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .border-separator {
+      height: 14px;
+      background: #d82d52;
+      width: 100px;
+      margin: 0 auto 50px;
+      border-radius: 3px;
+    }
+
+    a.popup-img:focus {
+      border: 5px solid #d82d52;
+      animation: border-pulsate 2s infinite;
+      animation-timing-function: ease-in-out;
+      outline: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+    }
+
+    img {
+      width: 50vw;
+
+      border-radius: 10px;
+      box-shadow: 0 0 15px;
+    }
+
+    #startButton {
+      background: rgb(59, 135, 203);
+      width: 300px;
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .list-group-item {
+      display: none;
+      border: 1px solid;
+      background: whitesmoke;
+      min-height: 62px;
+      list-style: none;
+    }
+
+    @keyframes border-pulsate {
+      0% {
+        border-color: #fd3560;
+      }
+
+      25% {
+        border-color: #ee315a;
+      }
+
+      50% {
+        border-color: #e22f56;
+      }
+
+      75% {
+        border-color: #ee315a;
+      }
+
+      100% {
+        border-color: #fd3560;
+      }
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    #modal {
+      display: none;
+      z-index: 9999;
+      position: fixed;
+      left: 0;
+      top: 0;
+      background: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100%;
+    }
+
+    #modal .inner {
+      background: #fff;
+      max-width: 80vw;
+      max-height: 80vh;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #modalImg {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="w-100 h-100">
+  <div class="container-fluid p-5 h-100">
+    <!-- navigation -->
+    <div class="w-100 navigation d-flex">
+      <div class="left-section">
+        <span class="h5 text-warning">Module 2</span>
+        <span class="h1 text-light">Border post officials</span>
+      </div>
+      <div class="triangle"></div>
+      <div class="right-section d-flex align-items-end justify-content-center">
+        <div id="progress-holder">
+          <span class="mx-4 p-2"><i class="fas fa-backward" id="fast-backward"></i> | <b>Slide</b>: 9b of 15 | <i
+              class="fas fa-forward" id="fast-forward"></i></span>
+          <div id="progressbar">
+            <div class="currentprogress">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- navigation end -->
+
+    <div class="container">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-6 mb-4 mt-1 w-100">
+          <ul class="list-group">
+            <li class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="1">
+              <a onclick="openModal('publicHealth')" href="#" data-focus="1" class="popup-img">
+                <img src="/img/key.png" class="key-list-icon" alt="">
+                <span class="h4 mb-0 py-2">Public health, Plant health and Veterinary Agencies</span>
+              </a>
+            </li>
+            <li class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="2">
+              <a onclick="openModal('immigrationAgency')" href="#" data-focus="2" class="popup-img">
+                <img src="/img/key.png" class="key-list-icon" alt="">
+                <span class="h4 mb-0 py-2">The Immigration Agency</span>
+              </a>
+            </li>
+            <li class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="3">
+              <a onclick="openModal('standardsControl')" href="#" data-focus="3" class="popup-img">
+                <img src="/img/key.png" class="key-list-icon" alt="">
+                <span class="h4 mb-0 py-2">The Bureau of Standards/Quality Control Agency</span>
+              </a>
+            </li>
+
+            <li class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="4">
+              <a onclick="openModal('securityAgencies')" href="#" data-focus="4" class="popup-img">
+                <img src="/img/key.png" class="key-list-icon" alt="">
+                <span class="h4 mb-0 py-2">Security Agencies</span>
+              </a>
+            </li>
+            <li class="list-group-item p-3 pl-2 h5 mb-0 align-items-center" data-step="5">
+              <a onclick="openModal('customsAgency')" href="#" data-focus="5" class="popup-img">
+                <img src="/img/key.png" class="key-list-icon" alt="">
+                <span class="h4 mb-0 py-2">The Customs Agency</span>
+              </a>
+              <a data-focus="6" id="startButton" href="slide9-3.html"
+                class="btn btn-primary px-5 py-3 h3 rounded mt-3 rounded-pill">CONTINUE</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="modal">
+      <div class="inner">
+        <img id="modalImg" src="" alt="">
+      </div>
+    </div>
+
+  </div>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/progressbar.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script>
+    progressbar(26, 45);
+
+    function goBack() {
+      window.location.href = "slide9-1.html";
+    }
+
+    function goForward() {
+      window.location.href = "slide9-3.html";
+    }
+
+    $("#fast-backward").click(function () {
+      goBack();
+    });
+    $("#fast-forward").click(function () {
+      goForward();
+    });
+
+    let step = 0;
+    let focused = 0;
+    let modalOpen = false;
+    let allowEnter = true;
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        if (modalOpen) {
+          if (!allowEnter) return;
+
+          allowEnter = false;
+          setTimeout(() => {
+            allowEnter = true;
+            closeModal();
+          }, 300)
+        }
+      }
+
+      if (event.key === 'MediaTrackPrevious' || event.key === 'MediaRewind') {
+        goBack();
+      }
+
+      if (event.key === 'MediaTrackNext' || event.key === 'MediaFastForward') {
+        goForward();
+      }
+      if (event.key === 'ArrowRight') {
+        if (modalOpen) {
+          return closeModal();
+        }
+        if (step == 7) return;
+        step++;
+        focused = step;
+        $('.list-group-item[data-step="' + step + '"]').show();
+        $('a[data-focus="' + focused + '"]').focus();
+      }
+
+      if (event.key === 'ArrowDown') {
+        if (modalOpen) {
+          return closeModal();
+        }
+        if (focused == 7) {
+          $('a[data-focus="' + focused + '"]').focus();
+          return;
+        }
+        focused++;
+        $('a[data-focus="' + focused + '"]').focus();
+      }
+
+      if (event.key === 'ArrowUp') {
+        if (modalOpen) {
+          return closeModal();
+        }
+        if (focused == 1) return;
+        focused--;
+        $('a[data-focus="' + focused + '"]').focus();
+      }
+
+    });
+
+    function closeModal() {
+      $('#modal').fadeOut();
+      modalOpen = false;
+    }
+
+    function openModal(type) {
+      $('#modal').fadeIn();
+      modalOpen = true;
+
+      if (type == 'publicHealth') {
+        document.getElementById('modalImg').src = "/module2/en/img/public-health.png";
+      }
+      if (type == 'immigrationAgency') {
+        document.getElementById('modalImg').src = "/module2/en/img/immigration-control.png";
+      }
+      if (type == 'standardsControl') {
+        document.getElementById('modalImg').src = "/module2/en/img/standards-control.png";
+      }
+      if (type == 'securityAgencies') {
+        document.getElementById('modalImg').src = "/module2/en/img/security.png";
+      }
+      if (type == 'customsAgency') {
+        document.getElementById('modalImg').src = "/module2/en/img/customs-agency.png";
+      }
+    }
+
+    AOS.init();
+  </script>
+</body>
+
+</html>

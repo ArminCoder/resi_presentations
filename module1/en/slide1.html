@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%; display: flex">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="../../bootstrap.css" />
+  <script src="../../js/aos.js"></script>
+  <link rel="stylesheet" href="../../css/aos.css" />
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" sizes="16x16" />
+  <title>Module 1 - Title</title>
+  <!-- <script src="./js/main.js"></script> -->
+  <link rel="stylesheet" href="../../css/all.css" />
+  <style>
+    .container-fluid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .button-navigation {
+      position: absolute;
+      bottom: 0;
+      padding: 20px;
+      right: 100px;
+      width: 100%;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .border-separator {
+      height: 14px;
+      background: #d82d52;
+      width: 100px;
+      margin: 0 auto 50px;
+      border-radius: 3px;
+    }
+
+    a:focus {
+      border: 5px solid #d82d52;
+      animation: border-pulsate 2s infinite;
+      animation-timing-function: ease-in-out;
+      outline: none;
+    }
+
+    @keyframes border-pulsate {
+      0% {
+        border-color: #fd3560;
+      }
+
+      25% {
+        border-color: #ee315a;
+      }
+
+      50% {
+        border-color: #e22f56;
+      }
+
+      75% {
+        border-color: #df2f55;
+      }
+
+      100% {
+        border-color: #d82d52;
+      }
+    }
+  </style>
+</head>
+
+<body class="w-100 h-100">
+  <div class="container-fluid p-5 h-100">
+    <!-- navigation -->
+    <div class="w-100 navigation d-flex">
+      <div class="left-section">
+        <span class="h5 text-warning">Module 1</span>
+        <span class="h1 text-light">Title</span>
+      </div>
+      <div class="triangle"></div>
+      <div class="right-section d-flex align-items-end justify-content-center">
+        <!-- <span class="mx-4 p-2"><b>Step</b>: 1 of 5</span> -->
+        <div id="progress-holder">
+          <span class="mx-4 p-2"><i class="fas fa-backward" id="fast-backward"></i> | <b>Slide</b>:
+            1a of 12 | <i class="fas fa-forward" id="fast-forward"></i>
+          </span>
+          <div id="progressbar">
+            <div class="currentprogress">&nbsp;</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- navigation end -->
+
+    <div class="title">
+      <div class="d-flex justify-content-center text-center text-dark display-1 mt-5 w-full h-full"
+        style="max-width: 1100px" data-aos="zoom-out-down" data-aos-delay="200">
+        LOREM IPSUM
+      </div>
+      <div class="d-flex justify-content-center text-center text-dark display-1 mt-5 w-full h-full"
+        style="max-width: 1100px" data-aos="zoom-out-up" data-aos-delay="400">
+        DOLOR SINT AMENT?
+      </div>
+    </div>
+    <div>
+      <a id="startButton" href="slide1-1.html" class="btn text-light px-5 py-4 h3 rounded mt-5 rounded-pill"
+        style="background: #d82d52; width: 300px">START MODULE</a>
+    </div>
+  </div>
+  <script src="/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/progressbar.js"></script>
+  <script>
+    progressbar(1, 29);
+    let index = 0;
+    function goBack() {
+      window.location.href = "../../module_selection_en.html";
+    }
+    function goForward() {
+      window.location.href = "slide1-1.html";
+    }
+    $("#fast-backward").click(function () {
+      goBack();
+    });
+    $("#fast-forward").click(function () {
+      goForward();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "MediaTrackPrevious" || event.key === "MediaRewind") {
+        //location.replace('module_selection.html')
+        goBack();
+      }
+
+      if (
+        event.key === "MediaTrackNext" ||
+        event.key === "MediaFastForward"
+      ) {
+        goForward();
+      }
+
+      if (event.key === "ArrowRight") {
+        window.location.href = "slide1-1.html";
+      }
+
+      if (event.key === "Enter") {
+        document.activeElement.click();
+      }
+    });
+
+    focus();
+
+    function focus() {
+      document.getElementById("startButton").focus();
+    }
+    AOS.init();
+  </script>
+</body>
+
+</html>
